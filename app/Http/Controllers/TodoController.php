@@ -23,7 +23,7 @@ class TodoController extends Controller
             $todos = Todo::orderBy('created_at')
                 ->paginate($paginate);
         }
-        return response()->json(['code' => 1, 'data' => $todos]);
+        return response()->json($todos);
     }
 
     public function get($id){
@@ -43,7 +43,7 @@ class TodoController extends Controller
         $errors = $validator->errors()->all();
         if (count($errors) > 0) {
             return response()->json([
-                'code' => '0',
+                'code' => 0,
                 'msg' => $errors
             ]);
         }
@@ -86,7 +86,7 @@ class TodoController extends Controller
         $errors = $validator->errors()->all();
         if (count($errors) > 0) {
             return response()->json([
-                'code' => '0',
+                'code' => 0,
                 'msg' => $errors
             ]);
         }
